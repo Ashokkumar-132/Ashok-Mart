@@ -11,7 +11,7 @@ import { useAuthUser } from "@/hooks/useAshokMart";
 import { addToCart } from "@/lib/cart";
 import { CATEGORIES } from "@/lib/format";
 
-type HomeSearch = { q?: string; category?: string };
+type HomeSearch = { q?: string | undefined; category?: string | undefined };
 
 export const Route = createFileRoute("/_authenticated/home")({
   validateSearch: (search: Record<string, unknown>): HomeSearch => ({
