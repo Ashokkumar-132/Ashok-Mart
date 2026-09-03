@@ -25,6 +25,7 @@ import { Route as AuthenticatedProductIdRouteImport } from './routes/_authentica
 import { Route as AuthenticatedSellerDashboardRouteImport } from './routes/_authenticated/seller/dashboard'
 import { Route as AuthenticatedSellerInventoryRouteImport } from './routes/_authenticated/seller/inventory'
 import { Route as AuthenticatedSellerOrdersRouteImport } from './routes/_authenticated/seller/orders'
+import { Route as AuthenticatedSellerProductsRouteImport } from './routes/_authenticated/seller/products'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -109,6 +110,12 @@ const AuthenticatedSellerOrdersRoute =
     path: '/seller/orders',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedSellerProductsRoute =
+  AuthenticatedSellerProductsRouteImport.update({
+    id: '/seller/products',
+    path: '/seller/products',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -126,6 +133,7 @@ export interface FileRoutesByFullPath {
   '/seller/dashboard': typeof AuthenticatedSellerDashboardRoute
   '/seller/inventory': typeof AuthenticatedSellerInventoryRoute
   '/seller/orders': typeof AuthenticatedSellerOrdersRoute
+  '/seller/products': typeof AuthenticatedSellerProductsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -143,6 +151,7 @@ export interface FileRoutesByTo {
   '/seller/dashboard': typeof AuthenticatedSellerDashboardRoute
   '/seller/inventory': typeof AuthenticatedSellerInventoryRoute
   '/seller/orders': typeof AuthenticatedSellerOrdersRoute
+  '/seller/products': typeof AuthenticatedSellerProductsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -162,6 +171,7 @@ export interface FileRoutesById {
   '/_authenticated/seller/dashboard': typeof AuthenticatedSellerDashboardRoute
   '/_authenticated/seller/inventory': typeof AuthenticatedSellerInventoryRoute
   '/_authenticated/seller/orders': typeof AuthenticatedSellerOrdersRoute
+  '/_authenticated/seller/products': typeof AuthenticatedSellerProductsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -181,6 +191,7 @@ export interface FileRouteTypes {
     | '/seller/dashboard'
     | '/seller/inventory'
     | '/seller/orders'
+    | '/seller/products'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -198,6 +209,7 @@ export interface FileRouteTypes {
     | '/seller/dashboard'
     | '/seller/inventory'
     | '/seller/orders'
+    | '/seller/products'
   id:
     | '__root__'
     | '/'
@@ -216,6 +228,7 @@ export interface FileRouteTypes {
     | '/_authenticated/seller/dashboard'
     | '/_authenticated/seller/inventory'
     | '/_authenticated/seller/orders'
+    | '/_authenticated/seller/products'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -340,6 +353,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedSellerOrdersRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/seller/products': {
+      id: '/_authenticated/seller/products'
+      path: '/seller/products'
+      fullPath: '/seller/products'
+      preLoaderRoute: typeof AuthenticatedSellerProductsRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
@@ -355,6 +375,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedSellerDashboardRoute: typeof AuthenticatedSellerDashboardRoute
   AuthenticatedSellerInventoryRoute: typeof AuthenticatedSellerInventoryRoute
   AuthenticatedSellerOrdersRoute: typeof AuthenticatedSellerOrdersRoute
+  AuthenticatedSellerProductsRoute: typeof AuthenticatedSellerProductsRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
@@ -369,6 +390,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedSellerDashboardRoute: AuthenticatedSellerDashboardRoute,
   AuthenticatedSellerInventoryRoute: AuthenticatedSellerInventoryRoute,
   AuthenticatedSellerOrdersRoute: AuthenticatedSellerOrdersRoute,
+  AuthenticatedSellerProductsRoute: AuthenticatedSellerProductsRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
