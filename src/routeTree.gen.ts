@@ -14,9 +14,13 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as AuthenticatedAccountRouteImport } from './routes/_authenticated/account'
 import { Route as AuthenticatedAddressRouteImport } from './routes/_authenticated/address'
 import { Route as AuthenticatedCartRouteImport } from './routes/_authenticated/cart'
+import { Route as AuthenticatedCheckoutRouteImport } from './routes/_authenticated/checkout'
 import { Route as AuthenticatedHomeRouteImport } from './routes/_authenticated/home'
+import { Route as AuthenticatedOrdersRouteImport } from './routes/_authenticated/orders'
+import { Route as AuthenticatedOrderConfirmationIdRouteImport } from './routes/_authenticated/order-confirmation.$id'
 import { Route as AuthenticatedProductIdRouteImport } from './routes/_authenticated/product.$id'
 
 const IndexRoute = IndexRouteImport.update({
@@ -43,6 +47,11 @@ const ResetPasswordRoute = ResetPasswordRouteImport.update({
   path: '/reset-password',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedAccountRoute = AuthenticatedAccountRouteImport.update({
+  id: '/account',
+  path: '/account',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedAddressRoute = AuthenticatedAddressRouteImport.update({
   id: '/address',
   path: '/address',
@@ -53,11 +62,27 @@ const AuthenticatedCartRoute = AuthenticatedCartRouteImport.update({
   path: '/cart',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedCheckoutRoute = AuthenticatedCheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedHomeRoute = AuthenticatedHomeRouteImport.update({
   id: '/home',
   path: '/home',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedOrdersRoute = AuthenticatedOrdersRouteImport.update({
+  id: '/orders',
+  path: '/orders',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedOrderConfirmationIdRoute =
+  AuthenticatedOrderConfirmationIdRouteImport.update({
+    id: '/order-confirmation/$id',
+    path: '/order-confirmation/$id',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedProductIdRoute = AuthenticatedProductIdRouteImport.update({
   id: '/product/$id',
   path: '/product/$id',
@@ -69,9 +94,13 @@ export interface FileRoutesByFullPath {
   '/forgot-password': typeof ForgotPasswordRoute
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/account': typeof AuthenticatedAccountRoute
   '/address': typeof AuthenticatedAddressRoute
   '/cart': typeof AuthenticatedCartRoute
+  '/checkout': typeof AuthenticatedCheckoutRoute
   '/home': typeof AuthenticatedHomeRoute
+  '/orders': typeof AuthenticatedOrdersRoute
+  '/order-confirmation/$id': typeof AuthenticatedOrderConfirmationIdRoute
   '/product/$id': typeof AuthenticatedProductIdRoute
 }
 export interface FileRoutesByTo {
@@ -79,9 +108,13 @@ export interface FileRoutesByTo {
   '/forgot-password': typeof ForgotPasswordRoute
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/account': typeof AuthenticatedAccountRoute
   '/address': typeof AuthenticatedAddressRoute
   '/cart': typeof AuthenticatedCartRoute
+  '/checkout': typeof AuthenticatedCheckoutRoute
   '/home': typeof AuthenticatedHomeRoute
+  '/orders': typeof AuthenticatedOrdersRoute
+  '/order-confirmation/$id': typeof AuthenticatedOrderConfirmationIdRoute
   '/product/$id': typeof AuthenticatedProductIdRoute
 }
 export interface FileRoutesById {
@@ -91,9 +124,13 @@ export interface FileRoutesById {
   '/forgot-password': typeof ForgotPasswordRoute
   '/register': typeof RegisterRoute
   '/reset-password': typeof ResetPasswordRoute
+  '/_authenticated/account': typeof AuthenticatedAccountRoute
   '/_authenticated/address': typeof AuthenticatedAddressRoute
   '/_authenticated/cart': typeof AuthenticatedCartRoute
+  '/_authenticated/checkout': typeof AuthenticatedCheckoutRoute
   '/_authenticated/home': typeof AuthenticatedHomeRoute
+  '/_authenticated/orders': typeof AuthenticatedOrdersRoute
+  '/_authenticated/order-confirmation/$id': typeof AuthenticatedOrderConfirmationIdRoute
   '/_authenticated/product/$id': typeof AuthenticatedProductIdRoute
 }
 export interface FileRouteTypes {
@@ -103,9 +140,13 @@ export interface FileRouteTypes {
     | '/forgot-password'
     | '/register'
     | '/reset-password'
+    | '/account'
     | '/address'
     | '/cart'
+    | '/checkout'
     | '/home'
+    | '/orders'
+    | '/order-confirmation/$id'
     | '/product/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -113,9 +154,13 @@ export interface FileRouteTypes {
     | '/forgot-password'
     | '/register'
     | '/reset-password'
+    | '/account'
     | '/address'
     | '/cart'
+    | '/checkout'
     | '/home'
+    | '/orders'
+    | '/order-confirmation/$id'
     | '/product/$id'
   id:
     | '__root__'
@@ -124,9 +169,13 @@ export interface FileRouteTypes {
     | '/forgot-password'
     | '/register'
     | '/reset-password'
+    | '/_authenticated/account'
     | '/_authenticated/address'
     | '/_authenticated/cart'
+    | '/_authenticated/checkout'
     | '/_authenticated/home'
+    | '/_authenticated/orders'
+    | '/_authenticated/order-confirmation/$id'
     | '/_authenticated/product/$id'
   fileRoutesById: FileRoutesById
 }
@@ -175,6 +224,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ResetPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/account': {
+      id: '/_authenticated/account'
+      path: '/account'
+      fullPath: '/account'
+      preLoaderRoute: typeof AuthenticatedAccountRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/address': {
       id: '/_authenticated/address'
       path: '/address'
@@ -189,11 +245,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedCartRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/checkout': {
+      id: '/_authenticated/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof AuthenticatedCheckoutRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/home': {
       id: '/_authenticated/home'
       path: '/home'
       fullPath: '/home'
       preLoaderRoute: typeof AuthenticatedHomeRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/orders': {
+      id: '/_authenticated/orders'
+      path: '/orders'
+      fullPath: '/orders'
+      preLoaderRoute: typeof AuthenticatedOrdersRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/order-confirmation/$id': {
+      id: '/_authenticated/order-confirmation/$id'
+      path: '/order-confirmation/$id'
+      fullPath: '/order-confirmation/$id'
+      preLoaderRoute: typeof AuthenticatedOrderConfirmationIdRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/product/$id': {
@@ -207,16 +284,24 @@ declare module '@tanstack/react-router' {
 }
 
 interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAccountRoute: typeof AuthenticatedAccountRoute
   AuthenticatedAddressRoute: typeof AuthenticatedAddressRoute
   AuthenticatedCartRoute: typeof AuthenticatedCartRoute
+  AuthenticatedCheckoutRoute: typeof AuthenticatedCheckoutRoute
   AuthenticatedHomeRoute: typeof AuthenticatedHomeRoute
+  AuthenticatedOrdersRoute: typeof AuthenticatedOrdersRoute
+  AuthenticatedOrderConfirmationIdRoute: typeof AuthenticatedOrderConfirmationIdRoute
   AuthenticatedProductIdRoute: typeof AuthenticatedProductIdRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAccountRoute: AuthenticatedAccountRoute,
   AuthenticatedAddressRoute: AuthenticatedAddressRoute,
   AuthenticatedCartRoute: AuthenticatedCartRoute,
+  AuthenticatedCheckoutRoute: AuthenticatedCheckoutRoute,
   AuthenticatedHomeRoute: AuthenticatedHomeRoute,
+  AuthenticatedOrdersRoute: AuthenticatedOrdersRoute,
+  AuthenticatedOrderConfirmationIdRoute: AuthenticatedOrderConfirmationIdRoute,
   AuthenticatedProductIdRoute: AuthenticatedProductIdRoute,
 }
 
