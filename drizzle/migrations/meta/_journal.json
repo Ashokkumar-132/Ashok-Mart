@@ -8,6 +8,13 @@
       "when": 1788431490604,
       "tag": "0000_ashokmart_core_schema",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1788431717141,
+      "tag": "0001_seed_demo_products",
+      "breakpoints": true
     }
   ]
 }
