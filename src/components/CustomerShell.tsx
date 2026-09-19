@@ -1,6 +1,7 @@
 import { useNavigate } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
+import { ChatWidget } from "@/components/ChatWidget";
 import { Navbar } from "@/components/Navbar";
 import { useAuthUser, useRole } from "@/hooks/useAshokMart";
 
@@ -17,6 +18,7 @@ export function CustomerShell({
 
   useEffect(() => {
     if (role === "seller") navigate({ to: "/seller/dashboard", replace: true });
+    if (role === "admin") navigate({ to: "/admin/dashboard", replace: true });
   }, [role, navigate]);
 
   return (
@@ -30,6 +32,7 @@ export function CustomerShell({
         </p>
         <p className="mt-3 text-xs">© {new Date().getFullYear()} AshokMart. Student project demo.</p>
       </footer>
+      <ChatWidget />
     </div>
   );
 }

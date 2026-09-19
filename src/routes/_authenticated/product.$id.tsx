@@ -4,6 +4,7 @@ import { Loader2, Minus, Plus } from "lucide-react";
 import { useState } from "react";
 
 import { CustomerShell } from "@/components/CustomerShell";
+import { Reviews } from "@/components/Reviews";
 import { Stars } from "@/components/Stars";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
@@ -34,7 +35,12 @@ function ProductPage() {
   const { data: product, isPending } = useQuery({
     queryKey: ["product", id],
     queryFn: async () => {
-      const { data, error } = await supabase.from("products").select("*").eq("id", id).maybeSingle();
+      const { data, error } = await supabase
+        .from("products")
+        .select("*")
+        .eq("id", id)
+        .eq("removed", false)
+        .maybeSingle();
       if (error) throw error;
       return data;
     },
@@ -156,6 +162,8 @@ function ProductPage() {
           </div>
         </div>
       </div>
+
+      <Reviews productId={product.id} />
     </CustomerShell>
   );
 }

@@ -46,7 +46,11 @@ function HomePage() {
   const { data: products, isPending } = useQuery({
     queryKey: ["products", q ?? "", category ?? ""],
     queryFn: async () => {
-      let query = supabase.from("products").select("*").order("created_at", { ascending: false });
+      let query = supabase
+        .from("products")
+        .select("*")
+        .eq("removed", false)
+        .order("created_at", { ascending: false });
       if (category) query = query.eq("category", category);
       if (q) query = query.or(`name.ilike.%${q}%,brand.ilike.%${q}%,category.ilike.%${q}%`);
       const { data, error } = await query;

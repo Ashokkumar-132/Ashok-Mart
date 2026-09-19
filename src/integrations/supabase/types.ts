@@ -10,7 +10,7 @@ export type Database = {
   // Allows to automatically instantiate createClient with right options
   // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
   __InternalSupabase: {
-    PostgrestVersion: "14.5"
+    PostgrestVersion: "14.17"
   }
   public: {
     Tables: {
@@ -208,6 +208,7 @@ export type Database = {
           name: string
           price: number
           rating: number
+          removed: boolean
           reviews: number
           seller_id: string | null
           specifications: string
@@ -226,6 +227,7 @@ export type Database = {
           name: string
           price: number
           rating?: number
+          removed?: boolean
           reviews?: number
           seller_id?: string | null
           specifications?: string
@@ -244,6 +246,7 @@ export type Database = {
           name?: string
           price?: number
           rating?: number
+          removed?: boolean
           reviews?: number
           seller_id?: string | null
           specifications?: string
@@ -275,6 +278,44 @@ export type Database = {
           phone?: string
         }
         Relationships: []
+      }
+      reviews: {
+        Row: {
+          comment: string
+          created_at: string
+          id: string
+          product_id: string
+          rating: number
+          user_id: string
+          user_name: string
+        }
+        Insert: {
+          comment?: string
+          created_at?: string
+          id?: string
+          product_id: string
+          rating: number
+          user_id: string
+          user_name?: string
+        }
+        Update: {
+          comment?: string
+          created_at?: string
+          id?: string
+          product_id?: string
+          rating?: number
+          user_id?: string
+          user_name?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "reviews_product_id_fkey"
+            columns: ["product_id"]
+            isOneToOne: false
+            referencedRelation: "products"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       user_roles: {
         Row: {
@@ -315,7 +356,7 @@ export type Database = {
       }
     }
     Enums: {
-      app_role: "customer" | "seller"
+      app_role: "customer" | "seller" | "admin"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -443,7 +484,7 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-      app_role: ["customer", "seller"],
+      app_role: ["customer", "seller", "admin"],
     },
   },
 } as const

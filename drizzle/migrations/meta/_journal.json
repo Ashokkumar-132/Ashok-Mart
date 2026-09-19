@@ -15,6 +15,20 @@
       "when": 1788431717141,
       "tag": "0001_seed_demo_products",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1789799345442,
+      "tag": "0002_add_admin_role",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1789799377399,
+      "tag": "0003_reviews_and_admin",
+      "breakpoints": true
     }
   ]
 }

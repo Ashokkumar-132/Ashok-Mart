@@ -31,6 +31,7 @@ function InventoryPage() {
       const { data, error } = await supabase
         .from("products")
         .select("id, name, category, price, stock")
+        .eq("removed", false)
         .order("name");
       if (error) throw error;
       return data;
