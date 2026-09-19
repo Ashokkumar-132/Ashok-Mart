@@ -4,7 +4,7 @@ import type { User } from "@supabase/supabase-js";
 
 import { supabase } from "@/integrations/supabase/client";
 
-export type Role = "customer" | "seller";
+export type Role = "customer" | "seller" | "admin";
 
 export function useAuthUser() {
   const [user, setUser] = useState<User | null | undefined>(undefined);

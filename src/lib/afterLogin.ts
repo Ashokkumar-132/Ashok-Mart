@@ -16,7 +16,9 @@ export function rememberRole(role: Role) {
 export function readRememberedRole(): Role {
   try {
     const v = localStorage.getItem(ROLE_KEY);
-    return v === "seller" ? "seller" : "customer";
+    if (v === "seller") return "seller";
+    if (v === "admin") return "admin";
+    return "customer";
   } catch {
     return "customer";
   }
@@ -52,6 +54,7 @@ export async function ensureProfileAndRole(user: User, desiredRole: Role): Promi
 }
 
 export async function destinationFor(role: Role): Promise<string> {
+  if (role === "admin") return "/admin/dashboard";
   if (role === "seller") return "/seller/dashboard";
   const { count } = await supabase
     .from("addresses")

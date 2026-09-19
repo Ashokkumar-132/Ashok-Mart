@@ -23,7 +23,7 @@ function SellerDashboard() {
     queryKey: ["seller-dashboard"],
     queryFn: async () => {
       const [{ data: products, error: pErr }, { data: orders, error: oErr }] = await Promise.all([
-        supabase.from("products").select("id, name, stock, price"),
+        supabase.from("products").select("id, name, stock, price").eq("removed", false),
         supabase.from("orders").select("id, total_amount, status"),
       ]);
       if (pErr) throw pErr;
