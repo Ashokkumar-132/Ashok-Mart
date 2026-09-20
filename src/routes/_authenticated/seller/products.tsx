@@ -70,6 +70,7 @@ function SellerProductsPage() {
       const { data, error: qErr } = await supabase
         .from("products")
         .select("*")
+        .eq("removed", false)
         .order("created_at", { ascending: false });
       if (qErr) throw qErr;
       return data as Product[];
