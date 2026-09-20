@@ -29,6 +29,13 @@
       "when": 1789799377399,
       "tag": "0003_reviews_and_admin",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1789887226323,
+      "tag": "0004_admin_update_order_status",
+      "breakpoints": true
     }
   ]
 }
