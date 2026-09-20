@@ -227,6 +227,11 @@ function LoginPage() {
             Create Account
           </Link>
         </p>
+        <p className="mt-2 text-center text-xs text-muted-foreground">
+          <Link to="/admin" className="font-medium hover:text-navy">
+            Administrator login
+          </Link>
+        </p>
       </div>
     </div>
   );
