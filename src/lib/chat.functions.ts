@@ -38,28 +38,61 @@ export const askAssistant = createServerFn({ method: "POST" })
       return { reply: "The shopping assistant is not configured right now. Please try again later." };
     }
 
-    const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+    const response = await fetch("https://ai.gateway.lovable.dev/v1/responses", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${apiKey}`,
+        "Lovable-API-Key": apiKey,
+        "X-Lovable-AIG-SDK": "fetch",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "google/gemini-2.5-flash",
-        messages: [{ role: "system", content: SYSTEM_PROMPT }, ...data.messages],
+        model: "openai/gpt-6-astra",
+        instructions: SYSTEM_PROMPT,
+        input: data.messages.map((m) => ({
+          role: m.role,
+          content: [{ type: m.role === "user" ? "input_text" : "output_text", text: m.content }],
+        })),
+        stream: true,
+        store: false,
+        reasoning: { effort: "low", summary: "auto" },
       }),
     });
 
     if (response.status === 429) {
       return { reply: "The assistant is busy right now. Please try again in a moment." };
     }
-    if (!response.ok) {
+    if (response.status === 402) {
+      return { reply: "The assistant is out of credits right now. Please try again later." };
+    }
+    if (!response.ok || !response.body) {
       return { reply: "Sorry, I could not answer that just now. Please try again." };
     }
 
-    const json = (await response.json()) as {
-      choices?: { message?: { content?: string } }[];
-    };
-    const reply = json.choices?.[0]?.message?.content?.trim();
-    return { reply: reply || "Sorry, I could not answer that just now. Please try again." };
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
+    let buffer = "";
+    let text = "";
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split("\n");
+      buffer = lines.pop() ?? "";
+      for (const line of lines) {
+        if (!line.startsWith("data:")) continue;
+        const payload = line.slice(5).trim();
+        if (!payload || payload === "[DONE]") continue;
+        try {
+          const event = JSON.parse(payload) as { type?: string; delta?: string };
+          if (event.type === "response.output_text.delta" && typeof event.delta === "string") {
+            text += event.delta;
+          }
+        } catch {
+          /* ignore malformed keep-alive lines */
+        }
+      }
+    }
+
+    return { reply: text.trim() || "Sorry, I could not answer that just now. Please try again." };
   });
