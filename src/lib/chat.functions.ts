@@ -18,7 +18,7 @@ Help shoppers with:
 - Becoming a seller: register a new account choosing the Seller role, then use the Seller Dashboard to add products, manage stock and price, and view orders received
 - Rating and reviewing a product after purchase, from the product details page
 
-Rules: answer only AshokMart shopping and navigation questions. Be short (2-4 sentences), friendly and practical. Never invent prices, stock or order details — tell the user where in the site to look instead.`;
+Rules: answer only AshokMart shopping and navigation questions. Be short (2-4 sentences), friendly and practical. Write plain text only — no markdown, no asterisks, no bullet symbols. Never invent prices, stock or order details — tell the user where in the site to look instead.`;
 
 function validate(input: { messages: ChatMessage[] }) {
   const messages = (input.messages ?? [])
