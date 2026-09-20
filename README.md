@@ -2,6 +2,8 @@
 
 **Everything You Need. Delivered.**
 
+> **Status:** Implementation complete — all buyer, seller, admin, review and chatbot features are functional.
+
 AshokMart is a complete multi-seller e-commerce web application built as a final-year capstone project. It supports three roles — **Buyer**, **Seller** and **Admin** — with a real database, real stock handling, server-side order totals and an AI shopping assistant. All prices are in Indian Rupees (₹).
 
 ---
