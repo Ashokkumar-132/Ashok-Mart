@@ -2,14 +2,14 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Loader2, Lock, Mail, Store, UserRound } from "lucide-react";
 
-import { Logo } from "@/components/Logo";
+import { Logo } from "@/components/branding/Logo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable/index";
-import { destinationFor, ensureProfileAndRole, rememberRole } from "@/lib/afterLogin";
-import type { Role } from "@/hooks/useAshokMart";
+import { destinationFor, ensureProfileAndRole, rememberRole } from "@/services/Authentication";
+import type { Role } from "@/hooks/useAccountData";
 
 export const Route = createFileRoute("/")({
   head: () => ({

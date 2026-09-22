@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { askAssistant, type ChatMessage } from "@/lib/chat.functions";
+import { askAssistant, type ChatMessage } from "@/services/Assistant.functions";
 
 const GREETING: ChatMessage = {
   role: "assistant",

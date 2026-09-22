@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 
 import { Button } from "@/components/ui/button";
-import { Stars } from "@/components/Stars";
+import { Stars } from "@/components/products/Stars";
 import { discountPercent, inr, stockLabel, stockState } from "@/lib/format";
 import type { Tables } from "@/integrations/supabase/types";
 

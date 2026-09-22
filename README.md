@@ -70,9 +70,10 @@ src/
       address.tsx, account.tsx
       seller/                 # Seller dashboard, products, inventory, orders
       admin/                  # Admin dashboard, users, orders, products
-  components/                 # UI components and role shells
-  lib/                        # Helpers: format, cart, afterLogin, chat server function
-  hooks/                      # Auth, role and data hooks
+  components/                 # UI grouped by layout, navigation, products, reviews and assistant
+  services/                   # Authentication, cart and assistant services
+  lib/                        # Shared formatting and utility helpers
+  hooks/                      # Account, role and shopping data hooks
   integrations/supabase/      # Generated database client and types
 drizzle/migrations/           # SQL schema, seed data and policies
 ```

@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
-import { useAuthUser, useProfile } from "@/hooks/useAshokMart";
+import { useAuthUser, useProfile } from "@/hooks/useAccountData";
 
 export function Reviews({ productId }: { productId: string }) {
   const user = useAuthUser();

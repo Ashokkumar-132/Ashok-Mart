@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 
-import { SellerShell } from "@/components/SellerShell";
+import { SellerShell } from "@/components/layout/SellerShell";
 import {
   Select,
   SelectContent,

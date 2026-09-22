@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { AlertTriangle, Boxes, IndianRupee, Loader2, Package, ShoppingBag } from "lucide-react";
 
-import { SellerShell } from "@/components/SellerShell";
+import { SellerShell } from "@/components/layout/SellerShell";
 import { supabase } from "@/integrations/supabase/client";
 import { inr } from "@/lib/format";
 
