@@ -45,9 +45,9 @@ AshokMart is a complete multi-seller e-commerce web application built as a final
 |---|---|
 | Frontend | React 19, TypeScript, TanStack Router, Tailwind CSS v4 |
 | Backend | TanStack Start server functions + PostgreSQL functions (RPC) |
-| Database | PostgreSQL (Lovable Cloud / Supabase) with Row Level Security |
+| Database | Managed PostgreSQL (Supabase-compatible) with Row Level Security |
 | Auth | Email + password with hashed credentials, role-based access |
-| AI | Lovable AI Gateway |
+| AI | Hosted AI gateway (server-side only) |
 | Build | Vite 7, Bun / npm |
 
 > Note: this project runs on a JavaScript/TypeScript server runtime rather than Java Spring Boot, because the hosting platform does not run a JVM. The layering is equivalent: routes (controllers) → server functions & SQL functions (services) → Supabase client & SQL (repositories) → tables (entities).
@@ -57,8 +57,8 @@ AshokMart is a complete multi-seller e-commerce web application built as a final
 ## Project structure
 
 ```
-src/
-  routes/                     # Pages and URL structure
+src/                          # Application source (frontend + server functions)
+  routes/                     # Pages, URL structure and API/server routes
     index.tsx                 # Buyer / seller login
     register.tsx              # Registration
     admin.tsx                 # Admin login
@@ -71,11 +71,16 @@ src/
       seller/                 # Seller dashboard, products, inventory, orders
       admin/                  # Admin dashboard, users, orders, products
   components/                 # UI grouped by layout, navigation, products, reviews and assistant
-  services/                   # Authentication, cart and assistant services
+  services/                   # Server-side services: authentication, cart, assistant
   lib/                        # Shared formatting and utility helpers
   hooks/                      # Account, role and shopping data hooks
-  integrations/supabase/      # Generated database client and types
-drizzle/migrations/           # SQL schema, seed data and policies
+  integrations/               # Generated database client and types
+  assets/, styles.css         # Images and global styles
+public/                       # Static files served as-is
+database/
+  migrations/                 # Versioned SQL: schema, policies, seed data
+  schema/                     # Typed schema definition
+docs/                         # Project documentation and roadmap
 ```
 
 ---
@@ -129,7 +134,7 @@ Only `VITE_`-prefixed values reach the browser. Service keys and the AI key are 
 
 ### Database setup
 
-The SQL migrations in `drizzle/migrations/` create the schema, policies, the `place_order` function and 24 demo products across 10 categories. Apply them in order against a PostgreSQL database.
+The SQL migrations in `database/migrations/` create the schema, policies, the `place_order` function and 24 demo products across 10 categories. Apply them in order against a PostgreSQL database.
 
 ---
 
