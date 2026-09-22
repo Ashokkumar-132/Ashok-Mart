@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { supabase } from "@/integrations/supabase/client";
-import { useAddresses, useAuthUser, useCart, useProfile } from "@/hooks/useAshokMart";
+import { useAddresses, useAuthUser, useCart, useProfile } from "@/hooks/useAccountData";
 
 export function Navbar({ initialSearch = "" }: { initialSearch?: string }) {
   const user = useAuthUser();

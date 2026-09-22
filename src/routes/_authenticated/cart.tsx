@@ -2,10 +2,10 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useQueryClient } from "@tanstack/react-query";
 import { Loader2, Minus, Plus, Trash2 } from "lucide-react";
 
-import { CustomerShell } from "@/components/CustomerShell";
+import { CustomerShell } from "@/components/layout/CustomerShell";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
-import { useAuthUser, useCart } from "@/hooks/useAshokMart";
+import { useAuthUser, useCart } from "@/hooks/useAccountData";
 import { DELIVERY_CHARGE, FREE_DELIVERY_ABOVE, inr, stockLabel } from "@/lib/format";
 
 export const Route = createFileRoute("/_authenticated/cart")({

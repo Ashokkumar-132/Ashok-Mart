@@ -1,7 +1,7 @@
 import type { User } from "@supabase/supabase-js";
 
 import { supabase } from "@/integrations/supabase/client";
-import type { Role } from "@/hooks/useAshokMart";
+import type { Role } from "@/hooks/useAccountData";
 
 export const ROLE_KEY = "ashokmart.role";
 

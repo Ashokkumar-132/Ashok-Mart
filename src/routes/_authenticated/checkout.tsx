@@ -3,10 +3,10 @@ import { useQueryClient } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
 
-import { CustomerShell } from "@/components/CustomerShell";
+import { CustomerShell } from "@/components/layout/CustomerShell";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
-import { useAddresses, useAuthUser, useCart } from "@/hooks/useAshokMart";
+import { useAddresses, useAuthUser, useCart } from "@/hooks/useAccountData";
 import { DELIVERY_CHARGE, FREE_DELIVERY_ABOVE, inr } from "@/lib/format";
 
 const PAYMENTS = ["COD", "UPI", "Card"] as const;

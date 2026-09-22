@@ -3,7 +3,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Loader2, Pencil, Plus, Trash2 } from "lucide-react";
 import { useState } from "react";
 
-import { SellerShell } from "@/components/SellerShell";
+import { SellerShell } from "@/components/layout/SellerShell";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -24,7 +24,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { supabase } from "@/integrations/supabase/client";
-import { useAuthUser } from "@/hooks/useAshokMart";
+import { useAuthUser } from "@/hooks/useAccountData";
 import { CATEGORIES, discountPercent, inr } from "@/lib/format";
 import type { Tables } from "@/integrations/supabase/types";
 

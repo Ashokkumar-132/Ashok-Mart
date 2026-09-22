@@ -1,8 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 
-import { CustomerShell } from "@/components/CustomerShell";
+import { CustomerShell } from "@/components/layout/CustomerShell";
 import { Button } from "@/components/ui/button";
-import { useAddresses, useAuthUser, useProfile } from "@/hooks/useAshokMart";
+import { useAddresses, useAuthUser, useProfile } from "@/hooks/useAccountData";
 
 export const Route = createFileRoute("/_authenticated/account")({
   head: () => ({

@@ -2,12 +2,12 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 
-import { Logo } from "@/components/Logo";
+import { Logo } from "@/components/branding/Logo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
-import { useAddresses, useAuthUser, useProfile } from "@/hooks/useAshokMart";
+import { useAddresses, useAuthUser, useProfile } from "@/hooks/useAccountData";
 
 export const Route = createFileRoute("/_authenticated/address")({
   head: () => ({

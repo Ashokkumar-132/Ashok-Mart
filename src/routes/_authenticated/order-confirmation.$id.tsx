@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { CheckCircle2, Loader2 } from "lucide-react";
 
-import { CustomerShell } from "@/components/CustomerShell";
+import { CustomerShell } from "@/components/layout/CustomerShell";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { inr } from "@/lib/format";

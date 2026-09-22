@@ -1,9 +1,9 @@
 import { useNavigate } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 
-import { ChatWidget } from "@/components/ChatWidget";
-import { Navbar } from "@/components/Navbar";
-import { useAuthUser, useRole } from "@/hooks/useAshokMart";
+import { ChatWidget } from "@/components/assistant/ChatWidget";
+import { Navbar } from "@/components/navigation/Navbar";
+import { useAuthUser, useRole } from "@/hooks/useAccountData";
 
 export function CustomerShell({
   children,

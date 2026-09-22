@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
 import { Loader2, Package, ShoppingBag, Store, Users } from "lucide-react";
 
-import { AdminShell } from "@/components/AdminShell";
+import { AdminShell } from "@/components/layout/AdminShell";
 import { supabase } from "@/integrations/supabase/client";
 import { inr } from "@/lib/format";
 

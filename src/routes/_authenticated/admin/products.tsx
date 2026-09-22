@@ -3,7 +3,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Loader2 } from "lucide-react";
 import { useState } from "react";
 
-import { AdminShell } from "@/components/AdminShell";
+import { AdminShell } from "@/components/layout/AdminShell";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,

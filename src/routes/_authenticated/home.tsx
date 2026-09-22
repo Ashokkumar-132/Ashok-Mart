@@ -3,12 +3,12 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
 
-import { CustomerShell } from "@/components/CustomerShell";
-import { ProductCard, type Product } from "@/components/ProductCard";
+import { CustomerShell } from "@/components/layout/CustomerShell";
+import { ProductCard, type Product } from "@/components/products/ProductCard";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
-import { useAuthUser } from "@/hooks/useAshokMart";
-import { addToCart } from "@/lib/cart";
+import { useAuthUser } from "@/hooks/useAccountData";
+import { addToCart } from "@/services/CartService";
 import { CATEGORIES } from "@/lib/format";
 
 type HomeSearch = { q?: string | undefined; category?: string | undefined };

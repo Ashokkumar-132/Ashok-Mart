@@ -7,7 +7,7 @@ import { LogOut } from "lucide-react";
 import logo from "@/assets/ashokmart-logo.png";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
-import { useAuthUser, useRole } from "@/hooks/useAshokMart";
+import { useAuthUser, useRole } from "@/hooks/useAccountData";
 
 const NAV = [
   { to: "/seller/dashboard", label: "Dashboard" },

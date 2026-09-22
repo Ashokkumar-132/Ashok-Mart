@@ -3,13 +3,13 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Loader2, Minus, Plus } from "lucide-react";
 import { useState } from "react";
 
-import { CustomerShell } from "@/components/CustomerShell";
-import { Reviews } from "@/components/Reviews";
-import { Stars } from "@/components/Stars";
+import { CustomerShell } from "@/components/layout/CustomerShell";
+import { Reviews } from "@/components/reviews/Reviews";
+import { Stars } from "@/components/products/Stars";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
-import { useAuthUser } from "@/hooks/useAshokMart";
-import { addToCart } from "@/lib/cart";
+import { useAuthUser } from "@/hooks/useAccountData";
+import { addToCart } from "@/services/CartService";
 import { discountPercent, inr, stockLabel, stockState } from "@/lib/format";
 
 export const Route = createFileRoute("/_authenticated/product/$id")({
